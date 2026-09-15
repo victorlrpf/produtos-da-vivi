@@ -39,6 +39,15 @@ export default function EncomendaModal({ produto, onClose }) {
           background: var(--color-bg);
           border: 1px solid var(--color-line);
         }
+        @media (max-width: 640px) {
+          .encomenda-modal-backdrop { align-items: flex-end; padding: 0; }
+          .encomenda-modal {
+            max-height: 94vh;
+            border-left: 0;
+            border-right: 0;
+            padding: 1rem;
+          }
+        }
         .encomenda-modal h2 { margin-top: 0.3rem; }
         .encomenda-modal .encomenda-form { margin-top: var(--space-sm); }
         .encomenda-modal-fechar {

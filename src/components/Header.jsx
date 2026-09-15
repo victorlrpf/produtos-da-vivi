@@ -1,3 +1,4 @@
+import { useState } from 'react'
 import { storeConfig } from '../config/store'
 
 const LINKS = [
@@ -9,6 +10,7 @@ const LINKS = [
 
 export default function Header() {
   const prefixo = window.location.pathname === '/' ? '' : '/'
+  const [menuAberto, setMenuAberto] = useState(false)
 
   return (
     <header className="site-header">
@@ -16,11 +18,21 @@ export default function Header() {
         <a href={`${prefixo}#topo`} className="brand">
           {storeConfig.nome}
         </a>
-        <nav aria-label="Navegação principal">
+        <button
+          className="menu-toggle"
+          type="button"
+          aria-expanded={menuAberto}
+          aria-controls="navegacao-principal"
+          onClick={() => setMenuAberto(!menuAberto)}
+        >
+          <span className="visually-hidden">Abrir menu</span>
+          {menuAberto ? '×' : '☰'}
+        </button>
+        <nav id="navegacao-principal" className={menuAberto ? 'menu-aberto' : ''} aria-label="Navegação principal">
           <ul className="nav-list">
             {LINKS.map((link) => (
               <li key={link.href}>
-                <a href={`${prefixo}${link.href}`}>{link.label}</a>
+                <a href={`${prefixo}${link.href}`} onClick={() => setMenuAberto(false)}>{link.label}</a>
               </li>
             ))}
           </ul>
@@ -41,6 +53,15 @@ export default function Header() {
           justify-content: space-between;
           padding-top: 1.1rem;
           padding-bottom: 1.1rem;
+        }
+        .menu-toggle {
+          display: none;
+          border: 1px solid var(--color-line);
+          background: transparent;
+          color: var(--color-plum);
+          font-size: 1.5rem;
+          line-height: 1;
+          padding: 0.4rem 0.65rem;
         }
         .brand {
           font-family: var(--font-display);
@@ -67,13 +88,20 @@ export default function Header() {
         }
         @media (max-width: 640px) {
           .site-header-inner {
-            flex-direction: column;
-            gap: 0.75rem;
-            align-items: flex-start;
-          }
-          .nav-list {
-            gap: 1rem;
             flex-wrap: wrap;
+            gap: 0.5rem;
+          }
+          .menu-toggle { display: block; margin-left: auto; }
+          .site-header nav { display: none; width: 100%; }
+          .site-header nav.menu-aberto { display: block; }
+          .nav-list {
+            flex-direction: column;
+            gap: 0;
+            padding: 0.5rem 0;
+          }
+          .nav-list li { border-top: 1px solid var(--color-line); }
+          .nav-list a { display: block; padding: 0.7rem 0; }
+          .brand { font-size: 1.25rem; }
           }
         }
       `}</style>

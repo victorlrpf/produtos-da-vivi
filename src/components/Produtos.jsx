@@ -113,6 +113,8 @@ export default function Produtos({ onAbrirProduto }) {
         }
         .filtro-produtos input,
         .filtro-produtos select {
+          min-width: 0;
+          flex: 1 1 180px;
           padding: 0.6rem 2rem 0.6rem 0.75rem;
           border: 1px solid var(--color-line);
           background: #fffaf5;

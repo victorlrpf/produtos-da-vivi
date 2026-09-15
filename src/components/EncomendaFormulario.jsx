@@ -115,6 +115,7 @@ export default function EncomendaFormulario({ produtoInicial = null }) {
           background: #fffaf5;
           border: 1px solid var(--color-line);
           padding: var(--space-md);
+          min-width: 0;
         }
         .campo {
           display: flex;

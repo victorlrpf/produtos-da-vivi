@@ -66,7 +66,10 @@ export default function ProdutoPagina({ produtoId, onVoltar }) {
         .produto-detalhe-descricao { color: var(--color-ink-soft); margin-top: var(--space-md); max-width: 52ch; }
         .produto-detalhe-lista { color: var(--color-ink-soft); margin: var(--space-md) 0; padding-left: 1.1rem; }
         .produto-detalhe-lista li + li { margin-top: 0.4rem; }
-        @media (max-width: 700px) { .produto-detalhe { grid-template-columns: 1fr; gap: var(--space-md); } }
+        @media (max-width: 700px) {
+          .produto-detalhe { grid-template-columns: 1fr; gap: var(--space-md); }
+          .produto-detalhe-info { padding-top: 0; }
+        }
       `}</style>
     </>
   )

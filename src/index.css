@@ -166,3 +166,21 @@ img {
     transition: none !important;
   }
 }
+
+@media (max-width: 640px) {
+  :root {
+    --space-md: 1.25rem;
+    --space-lg: 2.5rem;
+    --space-xl: 3.5rem;
+  }
+
+  .container {
+    padding-left: 1rem;
+    padding-right: 1rem;
+    width: 100%;
+  }
+
+  .section-heading { font-size: 2rem; }
+  .section-intro { font-size: 0.98rem; }
+  .btn { width: 100%; justify-content: center; }
+}
